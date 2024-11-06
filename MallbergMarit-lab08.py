@@ -1,9 +1,9 @@
 # Marit Mallberg
 # UWYO COSC 1010
-# Submission Date
+# 11/5/2024
 # Lab 07
 # Lab Section: 10
-# Sources, people worked with, help given to:
+# Sources, people worked with, help given to:Paige Elmstrand, Serena Skaff, lab tas. 
 # your
 # comments
 # here
@@ -98,6 +98,7 @@ while True:
     if type(diglist[3]) == float:
         lowerfloatcheck = False
     boundcheck = True
+
     if diglist[2]<diglist[3]:
         boundcheck = False
     slope_intercept(diglist[0],diglist[1],diglist[2],diglist[3])
@@ -115,20 +116,32 @@ print("*" * 75)
 
 def sqrt(n):
     """the sqrt function"""
-    
-    sn=n**(1/2)
-    return sn
+    if n<0:
+        return None
+    return n**(1/2)
+
 def quadformula(a,b,c):
     """ solves the quadratic formula for x-intercepts"""
     answers = []
-    xplus=(-b+sqrt(b**2-4*a*c))/2*a
+    bsqed= b**2
+    fourac=4*a*c
+    twoa = 2*a
+
+    insidesqrt = bsqed-fourac
+    
+    if insidesqrt < 0:
+        print("complex roots, no clear answer.")
+        return
+
+    root = sqrt(insidesqrt)
+    xplus=(-b+root)/twoa
     answers.append(xplus)
-    xminus = (-b-sqrt(b**2-4*a*c))/2*a
+    xminus = (-b-root)/twoa
     answers.append(xminus)
     print(answers)
 
 while True:
-    equation = input("give me the a, b, and c, type 'exit' to exit")
+    equation = input("give me the a, b, and c of a quadratic equation, type 'exit' to exit")
     if equation.lower() == "exit":
         break
     equation = equation.replace(" ", "")
